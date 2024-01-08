@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Flashcard Study App" Height="600" Width="800">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Navigation Panel -->
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="Start Learning" Margin="5"/>
             <Button Content="Create Flashcards" Margin="5"/>
@@ -18,9 +20,17 @@
             <Button Content="Settings" Margin="5"/>
         </StackPanel>
 
+        <!-- Main Content Area -->
         <Border Grid.Row="1" Margin="10" Background="WhiteSmoke">
-            <!-- Placeholder for flashcard content -->
-            <TextBlock Text="Flashcard Content Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel>
+                <!-- Flashcard Question Display -->
+                <TextBlock x:Name="FlashcardQuestionTextBlock" Text="Flashcard Question" HorizontalAlignment="Center" Margin="10" FontSize="20"/>
+
+                <!-- Interaction Buttons -->
+                <Button x:Name="CheckAnswerButton" Content="Check Answer" HorizontalAlignment="Center" Margin="5" Click="CheckAnswerButton_Click"/>
+                <Button x:Name="DidntKnowButton" Content="Didn't Know" HorizontalAlignment="Center" Margin="5" Click="DidntKnowButton_Click" Visibility="Collapsed"/>
+                <Button x:Name="KnowButton" Content="Know" HorizontalAlignment="Center" Margin="5" Click="KnowButton_Click" Visibility="Collapsed"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

@@ -6,7 +6,6 @@ C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\bin\Debug\net7.0-win
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\MainWindow.g.cs
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\FlashcardApp_MarkupCompile.cache
-C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\FlashcardApp_MarkupCompile.lref
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\MainWindow.baml
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\FlashcardApp.g.resources
 C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\obj\Debug\net7.0-windows\FlashcardApp.GeneratedMSBuildEditorConfig.editorconfig

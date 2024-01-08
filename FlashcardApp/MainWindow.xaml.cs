@@ -19,9 +19,26 @@ namespace FlashcardApp
         public MainWindow()
         {
             InitializeComponent();
+            // Initialize flashcard content here if needed
         }
 
-        // Event handlers for buttons will go here
+        private void CheckAnswerButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic to show the answer
+            DidntKnowButton.Visibility = Visibility.Visible;
+            KnowButton.Visibility = Visibility.Visible;
+        }
 
+        private void DidntKnowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic for handling "Didn't Know" response
+        }
+
+        private void KnowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic for handling "Know" response
+        }
+
+        // Other methods and event handlers
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj": {}
+    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj": {
+    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj",
+        "projectUniqueName": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj",
         "projectName": "FlashcardApp",
-        "projectPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj",
+        "projectPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj",
         "packagesPath": "C:\\Users\\kubag\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\obj\\",
+        "outputPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kubag\\AppData\\Roaming\\NuGet\\NuGet.Config",
