@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FlashcardApp
-build_property.ProjectDir = C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashCardApp\
+build_property.ProjectDir = C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\FlashcardApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

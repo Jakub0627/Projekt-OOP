@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r6yoJhL8JI0cmWfqDN7ZQ1GquihhvZ/oBueytMdxZfM31VghBMUk00rNKWWDmofBjJkcvDLvXlJR6sXcvWkLCQ==",
+  "dgSpecHash": "Sc+V1bRqHMjzGqawOcKJHS1M50YOcpyhwVmaNlxjcN/katwecaE34cmypOJfs4Z76nY3YzZ2gOyI2npbUwJQog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj",
+  "projectFilePath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kubag\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\kubag\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

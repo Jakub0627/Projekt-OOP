@@ -9,28 +9,33 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Navigation Panel -->
             <RowDefinition Height="*"/>
+            <!-- Main Content Area -->
         </Grid.RowDefinitions>
 
         <!-- Navigation Panel -->
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Start Learning" Margin="5"/>
-            <Button Content="Create Flashcards" Margin="5"/>
-            <Button Content="Review Progress" Margin="5"/>
-            <Button Content="Settings" Margin="5"/>
+            <Button Content="Start Learning" Margin="5" Command="{Binding StartLearningCommand}"/>
+            <Button Content="Create Flashcards" Margin="5" Command="{Binding CreateFlashcardsCommand}"/>
+            <Button Content="Review Progress" Margin="5" Command="{Binding ReviewProgressCommand}"/>
+            <Button Content="Settings" Margin="5" Command="{Binding SettingsCommand}"/>
         </StackPanel>
 
         <!-- Main Content Area -->
         <Border Grid.Row="1" Margin="10" Background="WhiteSmoke">
-            <StackPanel>
+            <StackPanel VerticalAlignment="Top">
                 <!-- Flashcard Question Display -->
-                <TextBlock x:Name="FlashcardQuestionTextBlock" Text="Flashcard Question" HorizontalAlignment="Center" Margin="10" FontSize="20"/>
+                <!-- Placeholder for now, update as needed -->
+                <TextBlock Text="Flashcard Question Here" HorizontalAlignment="Center" Margin="10" FontSize="20"/>
 
                 <!-- Interaction Buttons -->
-                <Button x:Name="CheckAnswerButton" Content="Check Answer" HorizontalAlignment="Center" Margin="5" Click="CheckAnswerButton_Click"/>
-                <Button x:Name="DidntKnowButton" Content="Didn't Know" HorizontalAlignment="Center" Margin="5" Click="DidntKnowButton_Click" Visibility="Collapsed"/>
-                <Button x:Name="KnowButton" Content="Know" HorizontalAlignment="Center" Margin="5" Click="KnowButton_Click" Visibility="Collapsed"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="Correct" Margin="5" Command="{Binding RecordAnswerCommand}" CommandParameter="True"/>
+                    <Button Content="Incorrect" Margin="5" Command="{Binding RecordAnswerCommand}" CommandParameter="False"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>
 </Window>
+

@@ -1,0 +1,15 @@
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\bin\Debug\net7.0\ConsoleFlashCards.exe
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\bin\Debug\net7.0\ConsoleFlashCards.deps.json
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\bin\Debug\net7.0\ConsoleFlashCards.runtimeconfig.json
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\bin\Debug\net7.0\ConsoleFlashCards.dll
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\bin\Debug\net7.0\ConsoleFlashCards.pdb
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.AssemblyInfoInputs.cache
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.AssemblyInfo.cs
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.csproj.CoreCompileInputs.cache
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.sourcelink.json
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.dll
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\refint\ConsoleFlashCards.dll
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.pdb
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ConsoleFlashCards.genruntimeconfig.cache
+C:\Users\kubag\Desktop\Projekt OOP\Projekt-OOP\ConsoleFlashCards\obj\Debug\net7.0\ref\ConsoleFlashCards.dll

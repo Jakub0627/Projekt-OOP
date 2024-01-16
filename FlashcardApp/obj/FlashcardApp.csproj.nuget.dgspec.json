@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj": {}
+    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj": {
+    "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj",
+        "projectUniqueName": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj",
         "projectName": "FlashcardApp",
-        "projectPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\FlashcardApp.csproj",
+        "projectPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashcardApp\\FlashcardApp.csproj",
         "packagesPath": "C:\\Users\\kubag\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\kubag\\Desktop\\Projekt OOP\\Projekt-OOP\\FlashCardApp\\obj\\",
         "projectStyle": "PackageReference",
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

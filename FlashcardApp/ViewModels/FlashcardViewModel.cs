@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using FlashcardApp.Services;
+using System.Windows; // Required for MessageBox
 
 namespace FlashcardApp.ViewModels
 {
@@ -8,34 +9,63 @@ namespace FlashcardApp.ViewModels
     {
         private readonly IUserProgressService _userProgressService;
 
+        // Commands for different functionalities
+        public ICommand StartLearningCommand { get; private set; }
+        public ICommand CreateFlashcardsCommand { get; private set; }
+        public ICommand ReviewProgressCommand { get; private set; }
+        public ICommand SettingsCommand { get; private set; }
+        public ICommand RecordAnswerCommand { get; private set; }
+
         public FlashcardViewModel(IUserProgressService userProgressService)
         {
             _userProgressService = userProgressService;
+
+            // Initialize commands
+            StartLearningCommand = new RelayCommand(_ => StartLearning());
+            CreateFlashcardsCommand = new RelayCommand(_ => CreateFlashcards());
+            ReviewProgressCommand = new RelayCommand(_ => ReviewProgress());
+            SettingsCommand = new RelayCommand(_ => OpenSettings());
             RecordAnswerCommand = new RelayCommand(RecordAnswerExecute);
         }
 
-        public ICommand RecordAnswerCommand { get; private set; }
-
-        private void RecordAnswerExecute(object parameter) //requires further attention!!!
+        private void StartLearning()
         {
-            if (parameter is int flashcardId)
+            MessageBox.Show("Start Learning clicked");
+        }
+
+        private void CreateFlashcards()
+        {
+            MessageBox.Show("Create Flashcards clicked");
+        }
+
+        private void ReviewProgress()
+        {
+            MessageBox.Show("Review Progress clicked");
+        }
+
+        private void OpenSettings()
+        {
+            MessageBox.Show("Settings clicked");
+        }
+
+        private void RecordAnswerExecute(object parameter)
+        {
+            if (parameter is bool isCorrect)
             {
                 try
                 {
-                    // Example logic - determine if the answer is correct
-                    bool isCorrect = true; // This should be replaced with actual logic
-
+                    // Example logic
                     // Record the user's answer
-                    _userProgressService.RecordAnswer(flashcardId, isCorrect);
+                    _userProgressService.RecordAnswer(0, isCorrect); // 0 is a placeholder
                 }
                 catch (Exception ex)
                 {
-                    // Handle exceptions - log or display error message
+                    // Handle exceptions
                 }
             }
         }
 
-        // Basic RelayCommand implementation
+        // RelayCommand implementation
         public class RelayCommand : ICommand
         {
             private readonly Action<object> _execute;
