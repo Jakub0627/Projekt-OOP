@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleFlashCards")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89389903b99ae316476b407da7864bbc9724ded9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4087eed79e9283cc1817e63ee18ba950887c5631")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleFlashCards")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleFlashCards")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
