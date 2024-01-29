@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System;
 using System.Data.SQLite;
+using ConsoleFlashCards.Models;
 
 namespace ConsoleFlashCards
 {
@@ -27,6 +28,12 @@ namespace ConsoleFlashCards
 
         public void CreateTable(SQLiteConnection conn)
         {
+            // Sprawdzenie połączenia
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
             // Sprawdzenie, czy tabela już istnieje
             SQLiteCommand checkTableCommand = conn.CreateCommand();
             checkTableCommand.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name='FlashCards';";
@@ -50,6 +57,12 @@ namespace ConsoleFlashCards
 
         public void InsertData(SQLiteConnection conn, string front, string back)
         {
+            // Sprawdzenie połączenia
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
             // Sprawdzenie czy rekord już istnieje
             SQLiteCommand checkCommand = conn.CreateCommand();
             checkCommand.CommandText = "SELECT COUNT(*) FROM FlashCards WHERE Front = @front OR Back = @back";
@@ -73,20 +86,115 @@ namespace ConsoleFlashCards
 
         public void ReadData(SQLiteConnection conn)
         {
-            SQLiteDataReader sqliteReader;
-            SQLiteCommand sqliteCommand;
-            sqliteCommand = conn.CreateCommand();
-            sqliteCommand.CommandText = "SELECT * FROM FlashCards";
-            sqliteReader = sqliteCommand.ExecuteReader();
-            while (sqliteReader.Read())
+            // Sprawdzenie połączenia
+            if (conn.State != System.Data.ConnectionState.Open)
             {
-                int id = sqliteReader.GetInt32(0);
-                string front = sqliteReader.GetString(1);
-                string back = sqliteReader.GetString(2);
-
-                Console.WriteLine($"ID: {id}, Front: {front}, Back: {back}");
+                conn.Open();
             }
-            conn.Close();
+
+            SQLiteCommand sqliteCommand = conn.CreateCommand();
+            sqliteCommand.CommandText = "SELECT * FROM FlashCards";
+
+            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string front = reader.GetString(1);
+                    string back = reader.GetString(2);
+
+                    Console.WriteLine($"ID: {id}, Front: {front}, Back: {back}");
+                }
+            }
+
+        }
+
+        public Flashcard? GetRandomFlashcard(SQLiteConnection conn)
+        {
+            // Sprawdzenie połączenia
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
+            SQLiteCommand sqliteCommand = conn.CreateCommand();
+
+            // Zapytanie o losową fiszkę
+            sqliteCommand.CommandText = "SELECT id, Front, Back FROM FlashCards ORDER BY RANDOM() LIMIT 1";
+
+            using (SQLiteDataReader reader = sqliteCommand.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string front = reader.GetString(1);
+                    string back = reader.GetString(2);
+
+                    return new Flashcard(id, front, back);
+                }
+            }
+            return null;
+          
+        }
+
+        public void UpdateData(SQLiteConnection conn, int id, string front, string back)
+        {
+            // Sprawdzenie połączenia
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
+            using (SQLiteCommand cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = "UPDATE FlashCards SET Front = @front, Back = @back WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@front", front);
+                cmd.Parameters.AddWithValue("@back", back);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine("Fiszka została zaktualizowana.");
+                }
+                else
+                {
+                    Console.WriteLine("Nie znaleziono fiszki o podanym ID.");
+                }
+            }
+        }
+
+        public void DeleteData(SQLiteConnection conn, int id)
+        {
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
+            using (SQLiteCommand cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = "DELETE FROM FlashCards WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine($"Fiszka o ID {id} została usunięta.");
+                }
+                else
+                {
+                    Console.WriteLine("Nie znaleziono fiszki o podanym ID.");
+                }
+            }
+        }
+
+        public void CloseConnection(SQLiteConnection conn)
+        {
+            if (conn != null && conn.State == System.Data.ConnectionState.Open)
+            {
+                conn.Close();
+                Console.WriteLine("Połączenie z bazą danych zostało zamknięte.");
+            }
         }
     }
 }

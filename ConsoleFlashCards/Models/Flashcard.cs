@@ -13,6 +13,13 @@ namespace ConsoleFlashCards.Models
         public string Front { get; set; }
         public string Back { get; set; }
 
+        public Flashcard(int id, string front, string back)
+        {
+            Id = id;
+            Front = front;
+            Back = back;
+        }
+
         public void DisplayFront()
         {
             Console.WriteLine(Front);
