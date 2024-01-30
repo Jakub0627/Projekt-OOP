@@ -1,22 +1,26 @@
 ﻿using ConsoleFlashCards.Interfaces;
 using ConsoleFlashCards.Models;
 using System;
-using System.Data.Entity.Infrastructure;
 using System.Data.SQLite;
 using System.Threading;
 
 namespace ConsoleFlashCards
 {
     internal class Program
-    {   
-        static void Main(string[] args)
+    {
+        private readonly ISQLiteManager sqliteManager;
+
+        public Program(ISQLiteManager sqliteManager)
         {
-            SQLiteManager sqliteManager = new SQLiteManager();
+            this.sqliteManager = sqliteManager;
+        }
+
+        public void Run()
+        {
             SQLiteConnection sqliteConnection = sqliteManager.CreateConnection();
 
-            // Logika aplikacji:
             Console.WriteLine("APLIKACJA DO FISZEK");
-            Console.WriteLine("Instrukcja: Podaj daną liczbę aby: ");
+            Console.WriteLine("Instrukcja: Podaj daną liczbę aby:");
             Console.WriteLine("1 - Nauka");
             Console.WriteLine("2 - Obecny wynik");
             Console.WriteLine("3 - Pokaż bazę słówek");
@@ -24,116 +28,108 @@ namespace ConsoleFlashCards
             Console.WriteLine("5 - Edytuj fiszkę");
             Console.WriteLine("6 - Usuń fiszkę");
             Console.WriteLine("7 - Koniec nauki.");
-            Console.WriteLine("y/n - wiem/nie wiem, podczas nauki");
-            Console.WriteLine();
+            Console.WriteLine("\n Po pokazaniu się fiszki masz 5s na zastanowienie się czy znasz odpowiedź");
+            Console.WriteLine("Jeśli znałeś odpowiedź, użyj 'y', jeśli nie, użyj 'n', program sam policzy punkty");
 
             ScoreCounter scoreCounter = new ScoreCounter();
             bool isRunning = true;
             while (isRunning)
             {
                 string input = Console.ReadLine();
-
-                if (input == "1")
+                switch (input)
                 {
-                    // start nauki
-                    Console.WriteLine("Nauka: użyj 'y' jeśli znasz odpowiedź, jeśli nie użyj 'n'. Użycie dowolnej innej opcji, zatwierdzi powrót do wyboru opcji 1-6.");
-
-                    do
-                    {                       
-                        Flashcard flashcard = sqliteManager.GetRandomFlashcard(sqliteConnection);
-
-                        Console.WriteLine($"Jak jest po polsku?: {flashcard.Back}");
-                        
-                        //czekaj 5s przed pokazaniem odpowiedzi
-                        Thread.Sleep(5000);
-
-                        Console.WriteLine($"Odpowiedź to: {flashcard.Front}");
-                        input = Console.ReadLine();
-
-                        if (input == "y")
-                        {                         
-                            scoreCounter.Good();
-                        }
-                        else if (input == "n")
+                    case "1":
+                        Console.WriteLine("Nauka: użyj 'y' jeśli znasz odpowiedź, jeśli nie użyj 'n'. Użycie dowolnej innej opcji zatwierdzi powrót do menu.");
+                        do
                         {
-                            scoreCounter.Bad();
-                        }
+                            Flashcard flashcard = sqliteManager.GetRandomFlashcard(sqliteConnection);
+                            Console.WriteLine($"Jak jest po polsku?: {flashcard.Back}");
 
-                    } while (input == "n" ||  input == "y");
+                            Thread.Sleep(5000);
+                            Console.WriteLine($"Odpowiedź to: {flashcard.Front}");
+                            input = Console.ReadLine();
 
-                }
-                else if (input == "2") 
-                {
-                    scoreCounter.ShowScore();
+                            if (input == "y") scoreCounter.Good();
+                            else if (input == "n") scoreCounter.Bad();
 
-                }
-                else if (input == "3")
-                {
-                    sqliteManager.ReadData(sqliteConnection);
-                }
-                else if (input == "4")
-                {
-                    Console.WriteLine("Tworzenie nowej fiszki.");
-                    Console.Write("Podaj treść po angielsku (Front): ");
-                    string front = Console.ReadLine();
+                        } while (input == "n" || input == "y");
+                        break;
 
-                    Console.Write("Podaj tłumaczenie po polsku (Back): ");
-                    string back = Console.ReadLine();
+                    case "2":
+                        scoreCounter.ShowScore();
+                        break;
 
-                    // walidacja
-                    if (!string.IsNullOrWhiteSpace(front) && !string.IsNullOrWhiteSpace(back))
-                    {
-                        sqliteManager.InsertData(sqliteConnection, front, back);
-                        Console.WriteLine("Nowa fiszka została dodana do bazy.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nie wprowadzono odpowiednich danych. Fiszka nie została utworzona.");
-                    }
-                }
-                else if (input == "5")
-                {
-                    Console.Write("Podaj ID fiszki do edycji: ");
-                    int id;
-                    if (int.TryParse(Console.ReadLine(), out id))
-                    {
-                        Console.Write("Nowa treść po angielsku (Front): ");
+                    case "3":
+                        sqliteManager.ReadData(sqliteConnection);
+                        break;
+
+                    case "4":
+                        Console.WriteLine("Tworzenie nowej fiszki.");
+                        Console.Write("Podaj treść po angielsku (Front): ");
                         string front = Console.ReadLine();
 
-                        Console.Write("Nowe tłumaczenie po polsku (Back): ");
+                        Console.Write("Podaj tłumaczenie po polsku (Back): ");
                         string back = Console.ReadLine();
 
-                        sqliteManager.UpdateData(sqliteConnection, id, front, back);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nieprawidłowe ID.");
-                    }
-                }
-                else if (input == "6")
-                {
-                    Console.Write("Podaj ID fiszki do usunięcia: ");
-                    int id;
-                    if (int.TryParse(Console.ReadLine(), out id))
-                    {
-                        sqliteManager.DeleteData(sqliteConnection, id);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nieprawidłowe ID.");
-                    }
-                }
-                else if (input == "7")
-                {
-                    isRunning = false;
-                    sqliteManager.CloseConnection(sqliteConnection);
-                    Console.WriteLine("Koniec nauki. Zamykanie aplikacji...");
-                }
-                else
-                {
-                    Console.WriteLine("Nieznana opcja, spróbuj ponownie.");
+                        if (!string.IsNullOrWhiteSpace(front) && !string.IsNullOrWhiteSpace(back))
+                        {
+                            sqliteManager.InsertData(sqliteConnection, front, back);
+                            Console.WriteLine("Nowa fiszka została dodana do bazy.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie wprowadzono odpowiednich danych. Fiszka nie została utworzona.");
+                        }
+                        break;
+
+                    case "5":
+                        Console.Write("Podaj ID fiszki do edycji: ");
+                        if (int.TryParse(Console.ReadLine(), out int editId))
+                        {
+                            Console.Write("Nowa treść po angielsku (Front): ");
+                            string newFront = Console.ReadLine();
+
+                            Console.Write("Nowe tłumaczenie po polsku (Back): ");
+                            string newBack = Console.ReadLine();
+
+                            sqliteManager.UpdateData(sqliteConnection, editId, newFront, newBack);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nieprawidłowe ID.");
+                        }
+                        break;
+
+                    case "6":
+                        Console.Write("Podaj ID fiszki do usunięcia: ");
+                        if (int.TryParse(Console.ReadLine(), out int deleteId))
+                        {
+                            sqliteManager.DeleteData(sqliteConnection, deleteId);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nieprawidłowe ID.");
+                        }
+                        break;
+
+                    case "7":
+                        isRunning = false;
+                        sqliteManager.CloseConnection(sqliteConnection);
+                        Console.WriteLine("Koniec nauki. Zamykanie aplikacji...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Nieznana opcja, spróbuj ponownie.");
+                        break;
                 }
             }
+        }
+
+        static void Main(string[] args)
+        {
+            ISQLiteManager sqliteManager = new SQLiteManager();
+            Program program = new Program(sqliteManager);
+            program.Run();
         }
     }
 }
